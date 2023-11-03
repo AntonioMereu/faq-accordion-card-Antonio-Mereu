@@ -15,9 +15,9 @@ window.addEventListener('load', () => {
     rowHeight();
     mainHeight();
 });
+
 window.addEventListener('resize', () => {
     rowHeight();
-    mainHeight();
 });
 
 accordionItems.forEach(item => {

@@ -27,22 +27,47 @@ body {
   margin: 0;
   min-height: calc(100vh - var(--main-margin-top));
   min-height: calc(100dvh - var(--main-margin-top));
-  background: linear-gradient(var(--soft-violet), var(--soft-blue));
+  background: linear-gradient(var(--soft-violet) 40%, var(--soft-blue));
 }
 
 main {
   display: grid;
   place-items: center;
   grid-template-rows: calc(var(--img-height) - 19vw) 1fr;
-  margin-block-start: var(--main-margin-top);
+  padding-block-start: var(--main-margin-top);
+  padding-block-end: var(--main-margin-top);
+  box-sizing: border-box;
 }
 
 .heading-img {
   position: relative;
-  align-self: center;
   width: 62%;
+  aspect-ratio: 1 / 0.76;
   top: 35%;
-  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url(./images/illustration-woman-online-desktop.svg);
+    background-size: cover;
+    align-self: center;
+    width: 100%;
+    aspect-ratio: 1 / 0.76;
+    z-index: 1;
+    filter: drop-shadow(0px 30px 0px hsl(245, 60%, 96%));
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-image: url(./images/illustration-box-desktop.svg);
+    background-size: cover;
+    width: 40%;
+    aspect-ratio: 1 / 0.964;
+    inset-block-end: 12%;
+    inset-inline-start: -2%;
+    z-index: 1;
+  }
 }
 
 .faq-container {
@@ -50,14 +75,16 @@ main {
   width: 88%;
   background-color: white;
   border-radius: 25px;
-  padding: 28px;
+  padding-inline: 28px;
+  padding-block: 50px;
   box-sizing: border-box;
+  box-shadow: 0px 25px 60px 5px hsl(255.52deg 100% 9.13% / 34%);
 }
 
 .accordion {
   position: relative;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 21vw;
 
   & h1 {
     text-align: center;
@@ -76,11 +103,12 @@ main {
     & h3 {
       font-weight: 400;
       font-size: 0.82rem;
+      margin-block: 18px;
     }
 
     & p {
       font-size: 0.77rem;
-      margin-block-start: 0px;
+      margin-block: 0px 20px;
       color: var(--dark-grayish-blue);
     }
   }
@@ -93,8 +121,9 @@ main {
     transition: font-weight 0.3s;
 
     &.active {
+      color: var(--very-dark-desaturated-blue);
       font-weight: 700;
-      transition: all 0s;
+      transition: font-weight 0s;
     }
 
     & img {
@@ -115,7 +144,7 @@ main {
   transition: max-height 0.3s;
 
   &.active {
-    max-height: 200px;
+    max-height: 150px;
     transition: all 0.8s ease;
   }
 }
