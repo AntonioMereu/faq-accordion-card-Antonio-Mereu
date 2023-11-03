@@ -1,0 +1,121 @@
+:root {
+  /* Primary */
+  --very-dark-desaturated-blue: hsl(238, 29%, 16%);
+  --soft-red: hsl(14, 88%, 65%);
+
+  /* Gradient */
+  --soft-violet: hsl(273, 75%, 66%);
+  --soft-blue: hsl(240, 73%, 65%);
+
+  /* Text */
+  --very-dark-grayish-blue: hsl(237, 12%, 33%);
+  --dark-grayish-blue: hsl(240, 6%, 50%);
+
+  /* Dividers */
+  --light-grayish-blue: hsl(240, 5%, 91%);
+
+  /* Sizes */
+  --main-margin-top: calc((100cqh - var(--main-height)) / 2);
+}
+
+* {
+  font-family: "Kumbh Sans", sans-serif;
+  color: var(--very-dark-grayish-blue);
+}
+
+body {
+  margin: 0;
+  min-height: calc(100vh - var(--main-margin-top));
+  min-height: calc(100dvh - var(--main-margin-top));
+  background: linear-gradient(var(--soft-violet), var(--soft-blue));
+}
+
+main {
+  display: grid;
+  place-items: center;
+  grid-template-rows: calc(var(--img-height) - 19vw) 1fr;
+  margin-block-start: var(--main-margin-top);
+}
+
+.heading-img {
+  position: relative;
+  align-self: center;
+  width: 62%;
+  top: 35%;
+  z-index: 1;
+}
+
+.faq-container {
+  position: relative;
+  width: 88%;
+  background-color: white;
+  border-radius: 25px;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.accordion {
+  position: relative;
+  width: 100%;
+  margin-top: 80px;
+
+  & h1 {
+    text-align: center;
+  }
+
+  & .accordion-item {
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: var(--light-grayish-blue);
+      z-index: 2;
+    }
+
+    & h3 {
+      font-weight: 400;
+      font-size: 0.82rem;
+    }
+
+    & p {
+      font-size: 0.77rem;
+      margin-block-start: 0px;
+      color: var(--dark-grayish-blue);
+    }
+  }
+
+  & .accordion-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+    transition: font-weight 0.3s;
+
+    &.active {
+      font-weight: 700;
+      transition: all 0s;
+    }
+
+    & img {
+      transform: rotateZ(0deg);
+      transition: all 0.3s;
+    }
+
+    & img.active {
+      transform: rotateZ(180deg);
+      transition: all 0.3s;
+    }
+  }
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+
+  &.active {
+    max-height: 200px;
+    transition: all 0.8s ease;
+  }
+}
