@@ -15,7 +15,7 @@
   --light-grayish-blue: hsl(240, 5%, 91%);
 
   /* Sizes */
-  --main-margin-top: calc((100cqh - var(--main-height)) / 2);
+  --main-margin-top: calc((100vh - var(--main-height)) / 2);
 }
 
 * {
@@ -24,24 +24,28 @@
 }
 
 body {
+  display: grid;
+  place-items: center;
   margin: 0;
-  min-height: calc(100vh - var(--main-margin-top));
-  min-height: calc(100dvh - var(--main-margin-top));
+  min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(var(--soft-violet) 40%, var(--soft-blue));
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 main {
   display: grid;
   place-items: center;
   grid-template-rows: calc(var(--img-height) - 19vw) 1fr;
-  padding-block-start: var(--main-margin-top);
-  padding-block-end: var(--main-margin-top);
+  /* padding-block-start: var(--main-margin-top);
+  padding-block-end: var(--main-margin-top); */
   box-sizing: border-box;
 }
 
 .heading-img {
   position: relative;
-  width: 62%;
+  width: min(62%, 400px);
   aspect-ratio: 1 / 0.76;
   top: 35%;
 
@@ -72,7 +76,7 @@ main {
 
 .faq-container {
   position: relative;
-  width: 88%;
+  width: min(88%, 500px);
   background-color: white;
   border-radius: 25px;
   padding-inline: 28px;
@@ -84,7 +88,7 @@ main {
 .accordion {
   position: relative;
   width: 100%;
-  margin-top: 21vw;
+  margin-top: min(21vw, 150px);
 
   & h1 {
     text-align: center;
@@ -108,6 +112,7 @@ main {
 
     & p {
       font-size: 0.77rem;
+      line-height: 1.2rem;
       margin-block: 0px 20px;
       color: var(--dark-grayish-blue);
     }
@@ -147,4 +152,10 @@ main {
     max-height: 150px;
     transition: all 0.8s ease;
   }
+}
+
+@media screen and (max-height: 850px) {
+    main {
+        margin-block: 50px;
+    }
 }

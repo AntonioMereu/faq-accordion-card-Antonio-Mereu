@@ -13,11 +13,10 @@ const mainHeight = () => {
 
 window.addEventListener('load', () => {
     rowHeight();
-    mainHeight();
 });
 
 window.addEventListener('resize', () => {
-    rowHeight();
+    // rowHeight();
 });
 
 accordionItems.forEach(item => {
@@ -26,11 +25,14 @@ accordionItems.forEach(item => {
         const accordionHeading = item.querySelector('.accordion-heading');
         const arrowIcon = item.querySelector('img');
 
+        
         if (content.classList.contains('active')) {
             content.classList.remove('active');
             accordionHeading.classList.remove('active');
             arrowIcon.classList.remove('active');
         } else {
+            content.scrollIntoView({ behavior: "smooth"});
+            
             accordionItems.forEach(item => {
                 item.querySelector('.accordion-content').classList.remove('active');
                 item.querySelector('.accordion-heading').classList.remove('active');
