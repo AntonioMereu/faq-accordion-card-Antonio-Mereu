@@ -1,6 +1,6 @@
 const root = document.querySelector(':root');
 const main = document.querySelector('main');
-const headingImage = document.querySelector('.heading-img');
+const headingImage = document.querySelector('.heading-img-mob');
 const accordionItems = document.querySelectorAll('.accordion-item');
 
 const rowHeight = () => {
@@ -16,7 +16,7 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('resize', () => {
-    // rowHeight();
+    rowHeight();
 });
 
 accordionItems.forEach(item => {
@@ -25,7 +25,6 @@ accordionItems.forEach(item => {
         const accordionHeading = item.querySelector('.accordion-heading');
         const arrowIcon = item.querySelector('img');
 
-        
         if (content.classList.contains('active')) {
             content.classList.remove('active');
             accordionHeading.classList.remove('active');
@@ -44,3 +43,5 @@ accordionItems.forEach(item => {
         }
     });
 });
+
+console.log(accordionItems[0].querySelector('h3'));

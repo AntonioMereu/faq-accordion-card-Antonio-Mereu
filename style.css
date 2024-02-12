@@ -43,7 +43,7 @@ main {
   box-sizing: border-box;
 }
 
-.heading-img {
+.heading-img-mob {
   position: relative;
   width: min(62%, 400px);
   aspect-ratio: 1 / 0.76;
@@ -74,7 +74,12 @@ main {
   }
 }
 
-.faq-container {
+.heading-imgs-desk {
+  position: relative;
+  display: none;
+}
+
+.container {
   position: relative;
   width: min(88%, 500px);
   background-color: white;
@@ -85,9 +90,8 @@ main {
   box-shadow: 0px 25px 60px 5px hsl(255.52deg 100% 9.13% / 34%);
 }
 
-.accordion {
+.faq {
   position: relative;
-  width: 100%;
   margin-top: min(21vw, 150px);
 
   & h1 {
@@ -95,6 +99,8 @@ main {
   }
 
   & .accordion-item {
+    padding-block: 1px;
+
     &::after {
       content: "";
       position: absolute;
@@ -155,7 +161,86 @@ main {
 }
 
 @media screen and (max-height: 850px) {
-    main {
-        margin-block: 50px;
+  main {
+    margin-block: 50px;
+  }
+}
+
+/* desktop media */
+@media screen and (min-width: 60rem) {
+  main {
+    grid-template-rows: 1fr;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width: clamp(800px, 64vw, 1500px);
+    height: clamp(510px, 70vh, 700px);
+    gap: 10%;
+    padding: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url(./images/illustration-box-desktop.svg);
+      background-size: cover;
+      overflow: visible;
+      width: 20%;
+      aspect-ratio: 1 / 1;
+      left: 0;
+      margin-inline-start: -10%;
+      top: 50%;
+      transform: translateY(-25%);
     }
+  }
+
+  .heading-img-mob {
+    display: none;
+  }
+
+  .heading-imgs-desk {
+    display: initial;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+
+    & .heading-img-desk {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 33cqw;
+    }
+
+    & .heading-bg-desk {
+      display: initial;
+      position: absolute;
+      right: 0;
+      transform: translateY(-30%);
+    }
+  }
+
+  .faq {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-inline-end: clamp(60px ,6vw, 95px);
+    gap: 20px;
+
+    & h1 {
+      text-align: start;
+      margin: 0;
+    }
+
+    & h3 img {
+      margin-inline-end: 15px;
+    }
+
+    & h3:hover {
+      cursor: pointer;
+      color: var(--soft-red);
+    }
+  }
 }
